@@ -101,17 +101,17 @@ def train_model():#创建训练模型
             Loss.backward()#反向传播
             optimizer.step()#更新参数
 
-            count += 1
-            total += labels.size(0)
-            correct += labels.eq(preds.max(1)[1]).sum().item()
-            accuracy  = 100 * correct / total
-            if count % 600 == 0:
+            count += 1 #批次数量加1
+            total += labels.size(0) #累加样本总数
+            correct += labels.eq(preds.max(1)[1]).sum().item() #累加预测正确的样本数
+            accuracy  = 100 * correct / total #计算准确率
+            if count % 600 == 0: #每600个批次打印一次
                 print("Epoch: {}, Iteration: {}, Loss: {}, accuracy :{}".format(epoch, count, Loss.data, accuracy))
 
 if __name__ == "__main__":
-    train_model()
-    torch.save(model.state_dict(), "mlenet.pth")
-    print("Saved PyTorch Model State to mlenet.pth")
+    train_model()#训练模型
+    torch.save(model.state_dict(), "mlenet.pth")#保存模型
+    print("Saved PyTorch Model State to mlenet.pth")#提示语句
 
 
 
