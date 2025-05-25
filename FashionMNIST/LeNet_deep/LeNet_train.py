@@ -7,6 +7,10 @@ import torchvision.transforms as transforms
 # 定义转换,将图片转换为张量数据，并进行归一化处理。
 data_transform = transforms.Compose(
     [
+        #增加数据增强代码
+        transforms.RandomHorizontalFlip(),#随机水平翻转
+        transforms.RandomVerticalFlip(),#随机垂直翻转
+        transforms.RandomRotation(15),#随机旋转
         transforms.ToTensor(),
         transforms.Normalize((0.5,), (0.5,))#单通道数据
     ]

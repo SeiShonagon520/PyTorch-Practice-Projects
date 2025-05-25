@@ -6,7 +6,7 @@ def test_model(model_path = "mlenet.pth"):#创建测试模型
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")#使用gpu运行
     model = LeNet()#初始化神经网络
     model.to(device)#将模型加载到gpu上
-    model.load_state_dict(torch.load("mlenet.pth",weights_only=True))#加载模型权重
+    model.load_state_dict(torch.load(model_path,weights_only=True))#加载模型权重
     model.eval()#切换到评估模式
 
     total = 0#测试数据总数
